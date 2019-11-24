@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="style.css">
+
+	<title>Memory Game</title>
+</head>
+
+<body>
+	<div id="frame001">
+		<div id="font001">
+			<div id="align001">
+				<h1>Memory Game</h1>
+				<h2 id="number123" style="visibility:visible;"></h2>
+				<button class="grey1" id="number111" onclick="generate()" style="visibility:visible;">Generate</button>
+				<h2> Number Guessing Game</h2>
+				<hr/>
+				<input type="text" id="num1" size="1" onchange="ValidatePassKey(this)" maxlength="1">
+				<input type="text" id="num2" size="1" maxlength="1">
+				<input type="text" id="num3" size="1" maxlength="1">
+				<input type="text" id="num4" size="1" maxlength="1">
+				<input type="text" id="num5" size="1" maxlength="1">
+				<input type="text" id="num6" size="1" maxlength="1">
+				<div id="retake">
+					<button class="grey1" onclick="submit()">Submit</button>
+				</div>
+				<br/><br/>
+				<p id="ans"></p>
+
+			</div>
+			
+		</div>
+	</div>
+	<script>
+		
+		var h = 0;
+		var i = 0;
+		var j = 0;
+		var k = 0;
+		var l = 0;
+		var m = 0;
+		var n;
+
+		var shuffles1=Math.floor(Math.random()*9);
+		var shuffles2=Math.floor(Math.random()*9);
+		var shuffles3=Math.floor(Math.random()*9);
+		var shuffles4=Math.floor(Math.random()*9);
+		var shuffles5=Math.floor(Math.random()*9);
+		var shuffles6=Math.floor(Math.random()*9);
+		
+		var A = [shuffles1,shuffles2,shuffles3,shuffles4,shuffles5,shuffles6];
+
+
+		function generate(){
+			number123.innerHTML = A;
+			document.getElementById("number111").style.visibility="hidden";
+		}
+ 		    setTimeout("generate1()",5000);
+		   
+		   function generate1(){
+			number123.innerHTML = A;
+			document.getElementById("number123").style.visibility="hidden";
+		}
+			 setTimeout("generate1()",5000);
+		
+		
+
+		function submit(){
+			var b = num1.value;
+			var c = num2.value;
+			var d = num3.value;
+			var e = num4.value;
+			var f = num5.value;
+			var g = num6.value;
+		if (b == shuffles1) {
+			h = 1;
+		}
+		else{
+			h = 0;
+		}
+		if (c == shuffles2) {
+			i = 1;
+		}
+		else{
+			i = 0;
+		}
+		if (d == shuffles3) {
+			j = 1;
+		}
+		else{
+			j = 0;
+		}
+		if (e == shuffles4) {
+			k = 1;
+		}
+		else{
+			k = 0;
+		}
+		if (f == shuffles5) {
+			l = 1;
+		}
+		else{
+			l = 0;
+		}
+		if (g == shuffles6) {
+			m = 1;
+		}
+		else{
+			m = 0;
+		}
+		var n = h + i + j + k + l + m;
+        
+        if (n == 0) {
+        	ans.innerHTML = "None of the number is correct.";
+        }
+         if (n == 1) {
+        	ans.innerHTML = "You have 1 number correct.";
+        }
+        if (n == 2) {
+        	ans.innerHTML = "You have 2 number correct.";
+        }
+        if (n == 3) {
+        	ans.innerHTML = "You have 3 number correct.";
+        }
+        if (n == 4) {
+        	ans.innerHTML = "You have 4 number correct.";
+        }
+        if (n == 5) {
+        	ans.innerHTML = "You have 5 number correct.";
+        }
+        if (n == 6) {
+        	ans.innerHTML = "Congratulation! You have found all the correct numbers.";
+        	retake.innerHTML = "<button class=grey1 onclick=repeat()>Repeat</button>";
+        }
+    }
+    
+    function repeat(){
+    	location.reload();
+    }
+
+		
+	</script>
+</body>
+</html>
